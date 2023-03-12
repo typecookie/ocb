@@ -2193,7 +2193,12 @@ options.registry.MobileVisibility = options.Class.extend({
      * @see this.selectClass for parameters
      */
     showOnMobile(previewMode, widgetValue, params) {
-        const classes = `d-none d-md-${this.$target.css('display')}`;
+        // For compatibility with former implementation: remove the previously
+        // added `d-md-*` class if any, as it should now be `d-lg-*`.
+        if (widgetValue) {
+            this.$target[0].classList.remove(`d-md-${this.$target.css('display')}`);
+        }
+        const classes = `d-none d-lg-${this.$target.css('display')}`;
         this.$target.toggleClass(classes, !widgetValue);
     },
 
@@ -2208,7 +2213,7 @@ options.registry.MobileVisibility = options.Class.extend({
         if (methodName === 'showOnMobile') {
             const classList = [...this.$target[0].classList];
             return classList.includes('d-none') &&
-                classList.some(className => className.startsWith('d-md-')) ? '' : 'true';
+                classList.some(className => className.match(/^(d-md-|d-lg-)/g)) ? '' : 'true';
         }
         return await this._super(...arguments);
     },
@@ -2764,11 +2769,19 @@ options.registry.SnippetMove = options.Class.extend({
                 break;
         }
         if (params.name === 'move_up_opt' || params.name === 'move_down_opt') {
-            dom.scrollTo(this.$target[0], {
-                extraOffset: 50,
-                easing: 'linear',
-                duration: 550,
-            });
+            const mainScrollingEl = $().getScrollingElement()[0];
+            const elTop = this.$target[0].getBoundingClientRect().top;
+            const heightDiff = mainScrollingEl.offsetHeight - this.$target[0].offsetHeight;
+            const bottomHidden = heightDiff < elTop;
+            const hidden = elTop < 0 || bottomHidden;
+            if (hidden) {
+                dom.scrollTo(this.$target[0], {
+                    extraOffset: 50,
+                    forcedOffset: bottomHidden ? heightDiff - 50 : undefined,
+                    easing: 'linear',
+                    duration: 500,
+                });
+            }
         }
     },
 });

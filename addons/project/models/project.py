@@ -637,7 +637,7 @@ class Task(models.Model):
     allow_subtasks = fields.Boolean(string="Allow Sub-tasks", related="project_id.allow_subtasks", readonly=True)
     subtask_count = fields.Integer("Sub-task count", compute='_compute_subtask_count')
     email_from = fields.Char(string='Email From', help="These people will receive email.", index=True,
-        compute='_compute_email_from', store="True", readonly=False)
+        compute='_compute_email_from', store="True", readonly=False, copy=False)
     allowed_user_ids = fields.Many2many('res.users', string="Visible to", groups='project.group_project_manager', compute='_compute_allowed_user_ids', store=True, readonly=False, copy=False)
     project_privacy_visibility = fields.Selection(related='project_id.privacy_visibility', string="Project Visibility")
     # Computed field about working time elapsed between record creation and assignation/closing.
@@ -875,7 +875,7 @@ class Task(models.Model):
 
     @api.depends('project_id.allowed_user_ids', 'project_id.privacy_visibility')
     def _compute_allowed_user_ids(self):
-        for task in self:
+        for task in self.with_context(prefetch_fields=False):
             portal_users = task.allowed_user_ids.filtered('share')
             internal_users = task.allowed_user_ids - portal_users
             if task.project_id.privacy_visibility == 'followers':

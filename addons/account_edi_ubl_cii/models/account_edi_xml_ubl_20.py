@@ -372,6 +372,12 @@ class AccountEdiXmlUBL20(models.AbstractModel):
         supplier = invoice.company_id.partner_id.commercial_partner_id
         customer = invoice.commercial_partner_id
 
+        # OrderReference/SalesOrderID (sales_order_id) is optional
+        sales_order_id = 'sale_line_ids' in invoice.invoice_line_ids._fields \
+                         and ",".join(invoice.invoice_line_ids.sale_line_ids.order_id.mapped('name'))
+        # OrderReference/ID (order_reference) is mandatory inside the OrderReference node !
+        order_reference = invoice.ref or invoice.name if sales_order_id else invoice.ref
+
         vals = {
             'builder': self,
             'invoice': invoice,
@@ -397,7 +403,8 @@ class AccountEdiXmlUBL20(models.AbstractModel):
                 'issue_date': invoice.invoice_date,
                 'due_date': invoice.invoice_date_due,
                 'note_vals': [html2plaintext(invoice.narration)] if invoice.narration else [],
-                'order_reference': invoice.invoice_origin,
+                'order_reference': order_reference,
+                'sales_order_id': sales_order_id,
                 'accounting_supplier_party_vals': {
                     'party_vals': self._get_partner_party_vals(supplier, role='supplier'),
                 },
@@ -458,6 +465,12 @@ class AccountEdiXmlUBL20(models.AbstractModel):
     # -------------------------------------------------------------------------
 
     def _import_fill_invoice_form(self, journal, tree, invoice_form, qty_factor):
+
+        def _find_value(xpath, element=tree):
+            # avoid 'TypeError: empty namespace prefix is not supported in XPath'
+            nsmap = {k: v for k, v in tree.nsmap.items() if k is not None}
+            return self.env['account.edi.format']._find_value(xpath, element, nsmap)
+
         logs = []
 
         if qty_factor == -1:
@@ -465,14 +478,12 @@ class AccountEdiXmlUBL20(models.AbstractModel):
 
         # ==== partner_id ====
 
-        partner = self._import_retrieve_info_from_map(
-            tree,
-            self._import_retrieve_partner_map(self.env.company, journal.type),
-        )
-        if partner:
-            invoice_form.partner_id = partner
-        else:
-            logs.append(_("Could not retrieve the %s.", _("customer") if invoice_form.move_type in ('out_invoice', 'out_refund') else _("vendor")))
+        role = "Customer" if invoice_form.journal_id.type == 'sale' else "Supplier"
+        vat = _find_value(f'//cac:Accounting{role}Party/cac:Party//cbc:CompanyID')
+        phone = _find_value(f'//cac:Accounting{role}Party/cac:Party//cbc:Telephone')
+        mail = _find_value(f'//cac:Accounting{role}Party/cac:Party//cbc:ElectronicMail')
+        name = _find_value(f'//cac:Accounting{role}Party/cac:Party//cbc:Name')
+        self._import_retrieve_and_fill_partner(invoice_form, name=name, phone=phone, mail=mail, vat=vat)
 
         # ==== currency_id ====
 
@@ -503,7 +514,7 @@ class AccountEdiXmlUBL20(models.AbstractModel):
             narration += note_node.text + "\n"
 
         payment_terms_node = tree.find('./{*}PaymentTerms/{*}Note')  # e.g. 'Payment within 10 days, 2% discount'
-        if payment_terms_node is not None:
+        if payment_terms_node is not None and payment_terms_node.text:
             narration += payment_terms_node.text + "\n"
 
         invoice_form.narration = narration

@@ -868,6 +868,16 @@ const SelectUserValueWidget = BaseSelectionUserValueWidget.extend({
      */
     async start() {
         await this._super(...arguments);
+        if (!this.menuEl.children.length) {
+            // Remove empty text nodes so that :empty css rule can work
+            // TODO this has been added here as a fix to be extra careful. In
+            // master we should just avoid adding text nodes inside
+            // we-selection-items in the first place.
+            while (this.menuEl.firstChild
+                    && !this.menuEl.firstChild.data.trim().length) {
+                this.menuEl.firstChild.remove();
+            }
+        }
 
         if (this.options && this.options.valueEl) {
             this.containerEl.insertBefore(this.options.valueEl, this.menuEl);
@@ -1758,6 +1768,8 @@ const RangeUserValueWidget = UnitUserValueWidget.extend({
         this.input.setAttribute('max', max);
         this.input.setAttribute('step', step);
         this.containerEl.appendChild(this.input);
+
+        this._onInputChange = _.debounce(this._onInputChange, 100);
     },
 
     //--------------------------------------------------------------------------
@@ -3920,6 +3932,18 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
         }
         return this._super.apply(this, arguments);
     },
+    /**
+     * @override
+     */
+    onBuilt() {
+        // Flip classes should no longer be used but are still present in some
+        // theme snippets.
+        if (this.$target[0].querySelector('.o_we_flip_x, .o_we_flip_y')) {
+            this._handlePreviewState(false, () => {
+                return {flip: this._getShapeData().flip};
+            });
+        }
+    },
 
     //--------------------------------------------------------------------------
     // Options
@@ -4191,7 +4215,7 @@ registry.BackgroundShape = SnippetOptionWidget.extend({
         }
         const searchParams = Object.entries(colors)
             .map(([colorName, colorValue]) => {
-                const encodedCol = encodeURIComponent(colorValue);
+                const encodedCol = encodeURIComponent(normalizeColor(colorValue));
                 return `${colorName}=${encodedCol}`;
             });
         if (flip.length) {
