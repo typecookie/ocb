@@ -111,6 +111,7 @@ class Contract(models.Model):
             domain = [
                 ('id', '!=', contract.id),
                 ('employee_id', '=', contract.employee_id.id),
+                ('company_id', '=', contract.company_id.id),
                 '|',
                     ('state', 'in', ['open', 'close']),
                     '&',
@@ -160,8 +161,8 @@ class Contract(models.Model):
         contracts_to_close = self.search([
             ('state', '=', 'open'),
             '|',
-            ('date_end', '<=', fields.Date.to_string(date.today() + relativedelta(days=1))),
-            ('visa_expire', '<=', fields.Date.to_string(date.today() + relativedelta(days=1))),
+            ('date_end', '<=', fields.Date.to_string(date.today())),
+            ('visa_expire', '<=', fields.Date.to_string(date.today())),
         ])
 
         if contracts_to_close:

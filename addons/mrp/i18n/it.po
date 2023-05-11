@@ -33,7 +33,7 @@ msgstr ""
 "POT-Creation-Date: 2020-10-29 15:48+0000\n"
 "PO-Revision-Date: 2020-09-07 08:14+0000\n"
 "Last-Translator: Sergio Zanchetta <primes2h@gmail.com>, 2023\n"
-"Language-Team: Italian (https://www.transifex.com/odoo/teams/41243/it/)\n"
+"Language-Team: Italian (https://app.transifex.com/odoo/teams/41243/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -193,7 +193,7 @@ msgstr ""
 "<p class=\"o_view_nocontent_smiling_face\">\n"
 "                        Caricare file per il prodotto\n"
 "                    </p><p>\n"
-"                        Usare questa funzionalità per memorizzare qualsiasi file, come i disegni e le specifiche.\n"
+"                        Usare questa funzionalità per memorizzare qualsiasi file, come i disegni o le specifiche.\n"
 "                    </p>"
 
 #. module: mrp
@@ -2628,7 +2628,7 @@ msgid ""
 "                workers and/or machines, they are used for costing, scheduling, capacity planning, etc."
 msgstr ""
 "Le operazioni di produzione vengono elaborate nei centri di lavoro. Questi ultimi possono essere costituiti da\n"
-"                lavoratori e/o macchine, usati per la stima dei costi, programmazione, pianificazione della capacità ecc."
+"                operatori e/o macchine, usati per la stima dei costi, programmazione, pianificazione della capacità ecc."
 
 #. module: mrp
 #: model_terms:ir.actions.act_window,help:mrp.mrp_workcenter_kanban_action
@@ -2638,7 +2638,7 @@ msgid ""
 "                They can be defined via the configuration menu."
 msgstr ""
 "Le operazioni di produzione vengono elaborate nei centri di lavoro. Questi ultimi possono essere costituiti da\n"
-"                lavoratori e/o macchine, usati per la stima dei costi, programmazione, pianificazione della capacità ecc.\n"
+"                operatori e/o macchine, usati per la stima dei costi, programmazione, pianificazione della capacità ecc.\n"
 "                Possono essere definiti attraverso il menù di configurazione."
 
 #. module: mrp

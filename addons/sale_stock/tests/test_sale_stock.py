@@ -281,6 +281,10 @@ class TestSaleStock(TestSaleCommon, ValuationReconciliationTestCommon):
         wizard = Form(self.env[(res_dict.get('res_model'))].with_context(res_dict['context'])).save()
         wizard.process_cancel_backorder()
 
+        #Check Exception error is logged on SO
+        activity = self.env['mail.activity'].search([('res_id', '=', self.so.id), ('res_model', '=', 'sale.order')])
+        self.assertEqual(len(activity), 1, 'When no backorder is created for a partial delivery, a warning error should be logged in its origin SO')
+
         # Check quantity delivered
         del_qty = sum(sol.qty_delivered for sol in self.so.order_line)
         self.assertEqual(del_qty, 4.0, 'Sale Stock: delivered quantity should be 4.0 after partial delivery')
@@ -1082,7 +1086,63 @@ class TestSaleStock(TestSaleCommon, ValuationReconciliationTestCommon):
         self.assertEqual(so.order_line[1].qty_delivered, 1)
         self.assertEqual(so.order_line[1].product_uom.id, uom_km_id)
 
+    def test_multiple_returns(self):
+        # Creates a sale order for 10 products.
+        sale_order = self._get_new_sale_order()
+        # Valids the sale order, then valids the delivery.
+        sale_order.action_confirm()
+        picking = sale_order.picking_ids
+        picking.move_lines.write({'quantity_done': 10})
+        picking.button_validate()
 
+        # Creates a return from the delivery picking.
+        return_picking_form = Form(self.env['stock.return.picking']
+            .with_context(active_ids=picking.ids, active_id=picking.id,
+            active_model='stock.picking'))
+        return_wizard = return_picking_form.save()
+        # Check that the correct quantity is set on the retrun
+        self.assertEqual(return_wizard.product_return_moves.quantity, 10)
+        return_wizard.product_return_moves.quantity = 2
+        # Valids the return picking.
+        res = return_wizard.create_returns()
+        return_picking = self.env['stock.picking'].browse(res['res_id'])
+        return_picking.move_lines.write({'quantity_done': 2})
+        return_picking.button_validate()
+
+        # Creates a second return from the delivery picking.
+        return_picking_form = Form(self.env['stock.return.picking']
+            .with_context(active_ids=picking.ids, active_id=picking.id,
+            active_model='stock.picking'))
+        return_wizard = return_picking_form.save()
+        # Check that the remaining quantity is set on the retrun
+        self.assertEqual(return_wizard.product_return_moves.quantity, 8)
+
+    def test_exception_delivery_partial_multi(self):
+        '''
+        When a backorder is cancelled for a picking in multi-picking,
+        the related SO should have an exception logged
+        '''
+        #Create 2 sale orders
+        so_1 = self._get_new_sale_order()
+        so_1.action_confirm()
+        picking_1 = so_1.picking_ids
+        picking_1.move_lines.write({'quantity_done': 1})
+
+        so_2 = self._get_new_sale_order()
+        so_2.action_confirm()
+        picking_2 = so_2.picking_ids
+        picking_2.move_lines.write({'quantity_done': 2})
+
+        #multi-picking validation
+        pick = picking_1 | picking_2
+        res_dict = pick.button_validate()
+        wizard = Form(self.env[(res_dict.get('res_model'))].with_context(res_dict['context'])).save()
+        wizard.backorder_confirmation_line_ids[1].write({'to_backorder': False})
+        wizard.process()
+
+        #Check Exception error is logged on so_2
+        activity = self.env['mail.activity'].search([('res_id', '=', so_2.id), ('res_model', '=', 'sale.order')])
+        self.assertEqual(len(activity), 1, 'When no backorder is created for a partial delivery, a warning error should be logged in its origin SO')
 class TestSaleStockOnly(SavepointCase):
 
     def test_no_automatic_assign(self):
