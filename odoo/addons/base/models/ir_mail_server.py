@@ -60,7 +60,7 @@ smtplib.stderr = WriteToLogger()
 def is_ascii(s):
     return all(ord(cp) < 128 for cp in s)
 
-address_pattern = re.compile(r'([^ ,<@]+@[^> ,]+)')
+address_pattern = re.compile(r'([^" ,<@]+@[^>" ,]+)')
 
 def extract_rfc2822_addresses(text):
     """Returns a list of valid RFC2822 addresses
@@ -78,6 +78,7 @@ class IrMailServer(models.Model):
     _name = "ir.mail_server"
     _description = 'Mail Server'
     _order = 'sequence'
+    _allow_sudo_commands = False
 
     NO_VALID_RECIPIENT = ("At least one valid recipient address should be "
                           "specified for outgoing emails (To/Cc/Bcc)")

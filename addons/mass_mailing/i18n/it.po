@@ -14,7 +14,6 @@
 # Cécile Collart <cco@odoo.com>, 2020
 # Léonie Bouchat <lbo@odoo.com>, 2020
 # Friederike Fasterling-Nesselbosch, 2022
-# Luca Carlo, 2023
 # Sergio Zanchetta <primes2h@gmail.com>, 2023
 # 
 msgid ""
@@ -56,7 +55,7 @@ msgstr "%s (copia)"
 #: code:addons/mass_mailing/models/mailing.py:0
 #, python-format
 msgid "%s Traces"
-msgstr ""
+msgstr "Monitoraggi %s"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.s_mail_block_discount1
@@ -85,7 +84,7 @@ msgid ""
 "                                        &amp;nbsp;"
 msgstr ""
 " \n"
-"                                        <span class=\"fa fa-credit-card fa-2x text-o-color-4\" role=\"img\" aria-label=\"Order\" title=\"Ordina\"/>\n"
+"                                        <span class=\"fa fa-credit-card fa-2x text-o-color-4\" role=\"img\" aria-label=\"Ordina\" title=\"Ordina\"/>\n"
 "                                         "
 
 #. module: mass_mailing
@@ -96,7 +95,7 @@ msgid ""
 "                                        &amp;nbsp;"
 msgstr ""
 " \n"
-"                                        <span class=\"fa fa-smile-o fa-2x text-o-color-4\" role=\"img\" aria-label=\"Enjoy\" title=\"Divertiti\"/>\n"
+"                                        <span class=\"fa fa-smile-o fa-2x text-o-color-4\" role=\"img\" aria-label=\"Divertiti\" title=\"Divertiti\"/>\n"
 "                                         "
 
 #. module: mass_mailing
@@ -130,7 +129,7 @@ msgid ""
 "groups=\"base.group_user\"/>"
 msgstr ""
 "<i class=\"fa fa-ban text-danger\" role=\"img\" title=\"Questa e-mail è "
-"nella lista nera dell'invio massivo\" aria-label=\"Blacklisted\" "
+"nella lista nera dell'invio massivo\" aria-label=\"Nella lista nera\" "
 "attrs=\"{'invisible': [('is_blacklisted', '=', False)]}\" "
 "groups=\"base.group_user\"/>"
 
@@ -140,13 +139,13 @@ msgid ""
 "<i class=\"fa fa-exclamation-triangle\" role=\"img\" aria-label=\"Warning\" "
 "title=\"Warning\"/>"
 msgstr ""
-"<i class=\"fa fa-exclamation-triangle\" role=\"img\" aria-label=\"Warning\" "
-"title=\"Attenzione\"/>"
+"<i class=\"fa fa-exclamation-triangle\" role=\"img\" aria-"
+"label=\"Attenzione\" title=\"Attenzione\"/>"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.mailing_list_view_kanban
 msgid "<i class=\"fa fa-user\" role=\"img\" aria-label=\"Contacts\" title=\"Contacts\"/>"
-msgstr "<i class=\"fa fa-user\" role=\"img\" aria-label=\"Contacts\" title=\"Contatti\"/>"
+msgstr "<i class=\"fa fa-user\" role=\"img\" aria-label=\"Contatti\" title=\"Contatti\"/>"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_form
@@ -208,8 +207,8 @@ msgid ""
 "<span class=\"fa fa-calendar-check-o mr-2 small my-auto\" aria-label=\"Sent "
 "date\"/>"
 msgstr ""
-"<span class=\"fa fa-calendar-check-o mr-2 small my-auto\" aria-label=\"Sent "
-"date\"/>"
+"<span class=\"fa fa-calendar-check-o mr-2 small my-auto\" aria-label=\"Data "
+"invio\"/>"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.s_mail_block_footer_social
@@ -227,8 +226,8 @@ msgid ""
 "<span class=\"fa fa-hourglass-half mr-2 small my-auto\" aria-"
 "label=\"Scheduled date\"/>"
 msgstr ""
-"<span class=\"fa fa-hourglass-half mr-2 small my-auto\" aria-"
-"label=\"Scheduled date\"/>"
+"<span class=\"fa fa-hourglass-half mr-2 small my-auto\" aria-label=\"Data "
+"programmata\"/>"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_kanban
@@ -236,7 +235,7 @@ msgid ""
 "<span class=\"fa fa-hourglass-o mr-2 small my-auto\" aria-label=\"Scheduled date\"/>\n"
 "                                            <span class=\"align-self-baseline\">Next Batch</span>"
 msgstr ""
-"<span class=\"fa fa-hourglass-o mr-2 small my-auto\" aria-label=\"Scheduled date\"/>\n"
+"<span class=\"fa fa-hourglass-o mr-2 small my-auto\" aria-label=\"Data programmata\"/>\n"
 "                                            <span class=\"align-self-baseline\">Gruppo successivo</span>"
 
 #. module: mass_mailing
@@ -667,7 +666,7 @@ msgstr "Scegli questo <b>tema</b>."
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.unsubscribe
 msgid "Choose your mailing subscriptions"
-msgstr "Scegli le iscrizioni per invio e-email"
+msgstr "Scegli le iscrizioni per invio e-mail"
 
 #. module: mass_mailing
 #. openerp-web
@@ -1365,7 +1364,7 @@ msgstr "È pubblica"
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__kpi_mail_required
 msgid "KPI mail required"
-msgstr "Email per KPI richiesta"
+msgstr "Richiesta e-mail ICP"
 
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__keep_archives
@@ -1602,7 +1601,7 @@ msgstr "Prova invio e-mail"
 #: model:ir.actions.act_window,name:mass_mailing.mailing_trace_action
 #: model:ir.ui.menu,name:mass_mailing.menu_email_statistics
 msgid "Mailing Traces"
-msgstr "Tracce di mailing"
+msgstr "Monitoraggi invio e-mail"
 
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__mailing_type
@@ -2440,7 +2439,7 @@ msgstr "Origine"
 #. module: mass_mailing
 #: model:ir.model.fields,field_description:mass_mailing.field_mailing_mailing__name
 msgid "Source Name"
-msgstr "Nome sorgente"
+msgstr "Nome origine"
 
 #. module: mass_mailing
 #: model:ir.model.fields.selection,name:mass_mailing.selection__mailing_mailing__reply_to_mode__email
@@ -3071,7 +3070,7 @@ msgstr "es. Mario Ferrari"
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.view_mail_mass_mailing_form
 msgid "e.g. New Sale on all T-shirts"
-msgstr "es. Nuovi saldi su tutte le megliette"
+msgstr "es. Nuovi saldi su tutte le magliette"
 
 #. module: mass_mailing
 #: model_terms:ir.ui.view,arch_db:mass_mailing.layout

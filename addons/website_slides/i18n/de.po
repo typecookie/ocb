@@ -1265,6 +1265,8 @@ msgid ""
 "Applied directly as ACLs. Allow to hide channels and their content for non "
 "members."
 msgstr ""
+"Direkt als ACLs angewendet. Erlauben Sie das Ausblenden von Kanälen und "
+"deren Inhalt für Nichtmitglieder."
 
 #. module: website_slides
 #. openerp-web
@@ -2745,7 +2747,7 @@ msgstr "HTTP Routing"
 #. module: website_slides
 #: model:slide.slide,name:website_slides.slide_category_demo_5_1
 msgid "Hand on !"
-msgstr ""
+msgstr "Hand drauf!"
 
 #. module: website_slides
 #: model:slide.slide,description:website_slides.slide_slide_demo_0_3
@@ -2824,7 +2826,7 @@ msgstr ""
 #. module: website_slides
 #: model:slide.tag,name:website_slides.slide_tag_demo_howto
 msgid "HowTo"
-msgstr ""
+msgstr "Wie?"
 
 #. module: website_slides
 #: model:ir.model.fields,field_description:website_slides.field_gamification_challenge__id
@@ -5468,6 +5470,8 @@ msgid ""
 "You are not allowed to add members to this course. Please contact the course"
 " responsible or an administrator."
 msgstr ""
+"Sie sind nicht berechtigt, Mitglieder zu diesem Kurs hinzuzufügen. Bitte "
+"kontaktieren Sie den Kursverantwortlichen oder einen Administrator."
 
 #. module: website_slides
 #. openerp-web

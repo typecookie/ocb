@@ -218,7 +218,7 @@ class AccountReconcileModel(models.Model):
     match_partner_category_ids = fields.Many2many('res.partner.category', string='Restrict Partner Categories to',
         help='The reconciliation model will only be applied to the selected customer/vendor categories.')
 
-    line_ids = fields.One2many('account.reconcile.model.line', 'model_id')
+    line_ids = fields.One2many('account.reconcile.model.line', 'model_id', copy=True)
     partner_mapping_line_ids = fields.One2many(string="Partner Mapping Lines",
                                                comodel_name='account.reconcile.model.partner.mapping',
                                                inverse_name='model_id',
@@ -685,6 +685,7 @@ class AccountReconcileModel(models.Model):
             AND move.state = 'posted'
             AND account.reconcile IS TRUE
             AND aml.reconciled IS FALSE
+            AND (account.internal_type NOT IN ('receivable', 'payable') OR aml.payment_id IS NULL)
         '''
 
         # Add conditions to handle each of the statement lines we want to match
@@ -749,12 +750,12 @@ class AccountReconcileModel(models.Model):
         # to the query to only search on move lines that are younger than this limit.
         if self.past_months_limit:
             date_limit = fields.Date.context_today(self) - relativedelta(months=self.past_months_limit)
-            query += "AND aml.date >= %(aml_date_limit)s"
+            query += " AND aml.date >= %(aml_date_limit)s"
             params['aml_date_limit'] = date_limit
 
         # Filter out excluded account.move.line.
         if excluded_ids:
-            query += 'AND aml.id NOT IN %(excluded_aml_ids)s'
+            query += ' AND aml.id NOT IN %(excluded_aml_ids)s'
             params['excluded_aml_ids'] = tuple(excluded_ids)
 
         if self.matching_order == 'new_first':

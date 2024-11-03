@@ -838,7 +838,7 @@ msgstr "Erlaubter Lagerort"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_warehouse_orderpoint__allowed_route_ids
 msgid "Allowed Route"
-msgstr ""
+msgstr "Erlaubte Route"
 
 #. module: stock
 #: model:ir.model.fields,help:stock.field_stock_inventory__prefill_counted_quantity
@@ -3197,16 +3197,18 @@ msgid "Invalid domain left operand %s"
 msgstr "Ungültiger linker Domain-Operand %s"
 
 #. module: stock
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
 msgid "Invalid domain operator %s"
 msgstr "Ungültiger Domain-Operator %s"
 
 #. module: stock
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
-msgid "Invalid domain right operand %s"
-msgstr "Ungültiger rechter Domain-Operand %s"
+msgid "Invalid domain right operand '%s'. It must be of type Integer/Float"
+msgstr ""
+"Ungültiger rechter Bereichsoperand „%s“. Er muss vom Typ "
+"Ganzzahl/Gleitkommazahl sein."
 
 #. module: stock
 #: code:addons/stock/models/product.py:0
@@ -3333,7 +3335,7 @@ msgstr "Lagerbestand zum Zeitpunkt"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_inventory_line__is_editable
 msgid "Is Editable"
-msgstr ""
+msgstr "Ist Editierbar"
 
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_stock_inventory__message_is_follower
@@ -3387,6 +3389,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock.field_stock_move__is_quantity_done_editable
 msgid "Is quantity done editable"
 msgstr "Ist die erledigte Menge editierbar"
+
+#. module: stock
+#: code:addons/stock/models/stock_move_line.py:0
+#, python-format
+msgid ""
+"It is not allowed to import reserved quantity, you have to use the quantity "
+"directly."
+msgstr ""
+"Es ist nicht möglich, reservierte Mengen zu importieren. Sie müssen die "
+"Menge direkt verwenden."
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -4570,7 +4582,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:stock.view_quant_package_form
 #: model_terms:ir.ui.view,arch_db:stock.view_quant_package_tree
 msgid "Package"
-msgstr "Verpackung"
+msgstr "Paket"
 
 #. module: stock
 #: model:ir.actions.report,name:stock.action_report_quant_package_barcode_small
@@ -5246,6 +5258,8 @@ msgid ""
 "Quants are auto-deleted when appropriate. If you must manually delete them, "
 "please ask a stock manager to do it."
 msgstr ""
+"Quants werden bei Bedarf automatisch gelöscht. Wenn Sie sie manuell löschen "
+"müssen, bitten Sie bitte einen Lagerverwalter, dies zu tun."
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -5642,7 +5656,7 @@ msgstr "Aufstockberichtssuche"
 #. module: stock
 #: model_terms:ir.ui.view,arch_db:stock.stock_report_view_search
 msgid "Report Quantity"
-msgstr ""
+msgstr "Berichtsmenge"
 
 #. module: stock
 #: model:ir.ui.menu,name:stock.menu_warehouse_report
@@ -7110,6 +7124,16 @@ msgstr ""
 "Mengen dieses Produkts gibt, die einem anderen Unternehmen gehören."
 
 #. module: stock
+#: code:addons/stock/models/product.py:0
+#, python-format
+msgid ""
+"This product's company cannot be changed as long as there are stock moves of"
+" it belonging to another company."
+msgstr ""
+"Das Unternehmen dieses Produkts kann nicht geändert werden, solange es "
+"Bestandsbewegungen gibt, die einem anderen Unternehmen gehören."
+
+#. module: stock
 #: model:ir.model.fields,help:stock.field_stock_change_product_qty__new_quantity
 msgid ""
 "This quantity is expressed in the Default Unit of Measure of the product."
@@ -7486,7 +7510,7 @@ msgstr "Mengeneinheiten"
 #. module: stock
 #: model:ir.model.fields,field_description:stock.field_product_replenish__product_uom_id
 msgid "Unit of measure"
-msgstr ""
+msgstr "Maßeinheit"
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -8242,8 +8266,10 @@ msgstr ""
 #. module: stock
 #: code:addons/stock/models/stock_move.py:0
 #, python-format
-msgid "You cannot split a stock move that has been set to 'Done'."
-msgstr "Sie können eine auf 'Erledigt' gesetzte Lagerbewegung nicht teilen."
+msgid "You cannot split a stock move that has been set to 'Done' or 'Cancel'."
+msgstr ""
+"Sie können eine auf „Erledigt“ oder „Storniert“ gesetzte Lagerbuchung nicht "
+"aufteilen."
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -8532,12 +8558,4 @@ msgstr "report_stock_quantity_graph"
 #: code:addons/stock/static/src/xml/stock_orderpoint.xml:0
 #, python-format
 msgid "should be replenished to reach the maximum of"
-msgstr ""
-
-#. module: stock
-#: code:addons/stock/models/stock_move_line.py:0
-#, python-format
-msgid ""
-"It is not allow to import reserved quantity, you have to use the quantity "
-"directly."
 msgstr ""

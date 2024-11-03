@@ -3165,16 +3165,16 @@ msgid "Invalid domain left operand %s"
 msgstr "Ongeldige linker operand %s"
 
 #. module: stock
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
 msgid "Invalid domain operator %s"
 msgstr "Ongeldige domein operator %s"
 
 #. module: stock
-#: code:addons/stock/models/product.py:0
+#: code:addons/stock/models/product.py:0 code:addons/stock/models/product.py:0
 #, python-format
-msgid "Invalid domain right operand %s"
-msgstr "Ongeldige rechter operand %s"
+msgid "Invalid domain right operand '%s'. It must be of type Integer/Float"
+msgstr "Ongeldige rechter operand '%s'. Het moet een geheel getal/float zijn"
 
 #. module: stock
 #: code:addons/stock/models/product.py:0
@@ -3355,6 +3355,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock.field_stock_move__is_quantity_done_editable
 msgid "Is quantity done editable"
 msgstr "Is de hoeveelheid gereed te bewerken"
+
+#. module: stock
+#: code:addons/stock/models/stock_move_line.py:0
+#, python-format
+msgid ""
+"It is not allowed to import reserved quantity, you have to use the quantity "
+"directly."
+msgstr ""
+"Het is niet mogelijk een gereserveerde hoeveelheid te importeren, je moet "
+"het aantal onmiddellijk gebruiken."
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -7071,6 +7081,16 @@ msgstr ""
 " van een ander bedrijf zijn."
 
 #. module: stock
+#: code:addons/stock/models/product.py:0
+#, python-format
+msgid ""
+"This product's company cannot be changed as long as there are stock moves of"
+" it belonging to another company."
+msgstr ""
+"Het bedrijf van dit product kan niet worden gewijzigd zolang er "
+"voorraadverplaatsingen van zijn die bij een ander bedrijf horen."
+
+#. module: stock
 #: model:ir.model.fields,help:stock.field_stock_change_product_qty__new_quantity
 msgid ""
 "This quantity is expressed in the Default Unit of Measure of the product."
@@ -8208,10 +8228,10 @@ msgstr ""
 #. module: stock
 #: code:addons/stock/models/stock_move.py:0
 #, python-format
-msgid "You cannot split a stock move that has been set to 'Done'."
+msgid "You cannot split a stock move that has been set to 'Done' or 'Cancel'."
 msgstr ""
-"Het is niet mogelijk een voorraadverplaatsing te splitsen welke in de "
-"'Gereed' fase is."
+"Je kan een voorraadverplaatsing die ingesteld is op 'Gereed' of 'Annuleren' "
+"niet splitsen."
 
 #. module: stock
 #: code:addons/stock/models/stock_quant.py:0
@@ -8500,13 +8520,3 @@ msgstr "report_stock_quantity_graph"
 #, python-format
 msgid "should be replenished to reach the maximum of"
 msgstr "zouden moeten aangevuld om het maximum te bereiken van "
-
-#. module: stock
-#: code:addons/stock/models/stock_move_line.py:0
-#, python-format
-msgid ""
-"It is not allow to import reserved quantity, you have to use the quantity "
-"directly."
-msgstr ""
-"Het is niet mogelijk een gereserveerde hoeveelheid te importeren, je moet "
-"het aantal onmiddellijk gebruiken."

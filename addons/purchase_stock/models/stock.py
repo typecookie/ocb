@@ -41,7 +41,7 @@ class StockMove(models.Model):
             price_unit_prec = self.env['decimal.precision'].precision_get('Product Price')
             line = self.purchase_line_id
             order = line.order_id
-            price_unit = line.price_unit
+            price_unit = line._prepare_compute_all_values()['price_unit']
             if line.taxes_id:
                 qty = line.product_qty or 1
                 price_unit = line.taxes_id.with_context(round=False).compute_all(price_unit, currency=line.order_id.currency_id, quantity=qty)['total_void']
@@ -234,7 +234,7 @@ class Orderpoint(models.Model):
         'product.supplierinfo', string='Vendor', check_company=True,
         domain="['|', ('product_id', '=', product_id), '&', ('product_id', '=', False), ('product_tmpl_id', '=', product_tmpl_id)]")
 
-    @api.depends('product_id.purchase_order_line_ids', 'product_id.purchase_order_line_ids.state')
+    @api.depends('product_id.purchase_order_line_ids.product_qty', 'product_id.purchase_order_line_ids.state')
     def _compute_qty(self):
         """ Extend to add more depends values """
         return super()._compute_qty()

@@ -5,7 +5,7 @@
 # Translators:
 # nomorality <mauro.deluca@me.com>, 2020
 # Matteo Boscolo <matteo.boscolo.76@gmail.com>, 2020
-# Manuela Feliciani <mfeliciani@alice.it>, 2020
+# 8134700ffe6f094973390ef07e124667_c4b4c74 <a062e38b537f13861df3b0ab06eb350c_672863>, 2020
 # Cesare Cugnasco <cesare.cugnasco@gmail.com>, 2020
 # Cécile Collart <cco@odoo.com>, 2020
 # neveroils <maiolif@mgftools.com>, 2020
@@ -23,8 +23,7 @@
 # Iacopo Simonelli <lsi@odoo.com>, 2020
 # Stefano Consolaro <stefano.consolaro@mymage.it>, 2022
 # Friederike Fasterling-Nesselbosch, 2022
-# Marianna Ciofani, 2023
-# Sergio Zanchetta <primes2h@gmail.com>, 2023
+# Sergio Zanchetta <primes2h@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
@@ -32,7 +31,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-29 15:48+0000\n"
 "PO-Revision-Date: 2020-09-07 08:14+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>, 2023\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>, 2024\n"
 "Language-Team: Italian (https://app.transifex.com/odoo/teams/41243/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +114,7 @@ msgstr "N. DiBa dove utilizzata"
 #: code:addons/mrp/models/mrp_production.py:0
 #, python-format
 msgid "%s Child MO's"
-msgstr "OdP secondari di %s"
+msgstr "OdP figlii di %s"
 
 #. module: mrp
 #: code:addons/mrp/models/mrp_production.py:0
@@ -163,22 +162,24 @@ msgstr ": quantità da disassemblare non sufficiente"
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_workcenter_kanban
 #: model_terms:ir.ui.view,arch_db:mrp.stock_production_type_kanban
 msgid "<i class=\"fa fa-ellipsis-v\" role=\"img\" aria-label=\"Manage\" title=\"Manage\"/>"
-msgstr "<i class=\"fa fa-ellipsis-v\" role=\"img\" aria-label=\"Manage\" title=\"Gestisci\"/>"
+msgstr ""
+"<i class=\"fa fa-ellipsis-v\" role=\"img\" aria-label=\"Gestisci\" "
+"title=\"Gestisci\"/>"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.workcenter_line_kanban
 msgid "<i class=\"fa fa-pause\" role=\"img\" aria-label=\"Pause\" title=\"Pause\"/>"
-msgstr "<i class=\"fa fa-pause\" role=\"img\" aria-label=\"Pause\" title=\"Metti in pausa\"/>"
+msgstr "<i class=\"fa fa-pause\" role=\"img\" aria-label=\"Sospendi\" title=\"Sospendi\"/>"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.workcenter_line_kanban
 msgid "<i class=\"fa fa-play\" role=\"img\" aria-label=\"Run\" title=\"Run\"/>"
-msgstr "<i class=\"fa fa-play\" role=\"img\" aria-label=\"Run\" title=\"Esegui\"/>"
+msgstr "<i class=\"fa fa-play\" role=\"img\" aria-label=\"Esegui\" title=\"Esegui\"/>"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.workcenter_line_kanban
 msgid "<i class=\"fa fa-stop\" role=\"img\" aria-label=\"Stop\" title=\"Stop\"/>"
-msgstr "<i class=\"fa fa-stop\" role=\"img\" aria-label=\"Stop\" title=\"Ferma\"/>"
+msgstr "<i class=\"fa fa-stop\" role=\"img\" aria-label=\"Ferma\" title=\"Ferma\"/>"
 
 #. module: mrp
 #: code:addons/mrp/models/mrp_bom.py:0
@@ -204,8 +205,8 @@ msgid ""
 "specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"I valori impostati qui sono "
-"specifici per azienda.\" role=\"img\" aria-label=\"Values set here are "
-"company-specific.\" groups=\"base.group_multi_company\"/>"
+"specifici per azienda.\" role=\"img\" aria-label=\"I valori impostati qui "
+"sono specifici per azienda.\" groups=\"base.group_multi_company\"/>"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
@@ -215,7 +216,7 @@ msgstr "<span class=\"o_stat_text\">Ordini residui</span>"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
 msgid "<span class=\"o_stat_text\">Child MO</span>"
-msgstr "<span class=\"o_stat_text\">OdP secondario</span>"
+msgstr "<span class=\"o_stat_text\">OdP figlio</span>"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_workcenter_view
@@ -303,7 +304,7 @@ msgstr "<span>Prodotti non associati a un kit</span>"
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_workcenter_kanban
 msgid "<span>Reporting</span>"
-msgstr "<span>Rendiconto</span>"
+msgstr "<span>Rendicontazione</span>"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_workcenter_kanban
@@ -1703,7 +1704,7 @@ msgstr "Contenuto del file (base64)"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_document__raw
 msgid "File Content (raw)"
-msgstr "Contenuto del file (raw)"
+msgstr "Contenuto del file (grezzo)"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_document__file_size
@@ -2529,7 +2530,7 @@ msgstr "Produzione del prodotto"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_stock_warehouse__manufacture_to_resupply
 msgid "Manufacture to Resupply"
-msgstr "Rifornire su produzione"
+msgstr "Rifornimento su produzione"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_product_product__mrp_product_qty
@@ -3091,7 +3092,7 @@ msgstr ""
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_workorder_tree_editable_view
 msgid "Pause"
-msgstr "Metti in pausa"
+msgstr "Sospendi"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.view_mrp_production_work_order_search
@@ -3585,7 +3586,7 @@ msgstr "Quantità:"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_workorder__move_raw_ids
 msgid "Raw Moves"
-msgstr ""
+msgstr "Movimenti materie prime"
 
 #. module: mrp
 #: model:ir.model.fields.selection,name:mrp.selection__mrp_production__reservation_state__assigned
@@ -3608,7 +3609,7 @@ msgid ""
 "in its BoM or child BoMs!"
 msgstr ""
 "Errore di ricorsività. Un prodotto con una distinta base non deve far parte "
-"della stessa DiBa o di una secondaria."
+"della stessa DiBa o di DiBa figlie."
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_bom__code
@@ -3657,7 +3658,7 @@ msgstr "Resoconto:"
 #. module: mrp
 #: model:ir.ui.menu,name:mrp.menu_mrp_reporting
 msgid "Reporting"
-msgstr "Rendiconto"
+msgstr "Rendicontazione"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
@@ -3786,7 +3787,7 @@ msgstr "Informazioni programmazione"
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
 #, python-format
 msgid "Scrap"
-msgstr "Scarta"
+msgstr "Scarto"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_production__scrap_count
@@ -4134,17 +4135,17 @@ msgstr "Struttura e costo"
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_bom_line__child_bom_id
 msgid "Sub BoM"
-msgstr ""
+msgstr "DiBa secondaria"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.res_config_settings_view_form
 msgid "Subcontract the production of some products"
-msgstr "Esternalizza la produzione di alcuni prodotti"
+msgstr "Affida in subfornitura la produzione di alcuni prodotti"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_res_config_settings__module_mrp_subcontracting
 msgid "Subcontracting"
-msgstr "Esternalizzazione"
+msgstr "Subfornitura"
 
 #. module: mrp
 #: model:product.product,name:mrp.product_product_computer_desk
@@ -4421,7 +4422,7 @@ msgstr ""
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.report_mrp_bom_line
 msgid "This is a BoM of type Kit!"
-msgstr "DiBa di tipo Kit."
+msgstr "DiBa di tipo kit."
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.report_mrp_bom
@@ -4518,7 +4519,7 @@ msgstr "Fuso orario"
 #: model:digest.tip,name:mrp.digest_tip_mrp_0
 #: model_terms:digest.tip,tip_description:mrp.digest_tip_mrp_0
 msgid "Tip: Use tablets in the shop to control manufacturing"
-msgstr "Suggerimento: per controllare la produzione usa i tablet nel negozio"
+msgstr "Suggerimento: per controllare la produzione in officina usa i tablet"
 
 #. module: mrp
 #: model:ir.model.fields,field_description:mrp.field_mrp_production_backorder_line__to_backorder
@@ -4726,7 +4727,7 @@ msgstr "Unità di misura"
 msgid ""
 "Unit of Measure (Unit of Measure) is the unit of measurement for the "
 "inventory control"
-msgstr "UdM è l'unità di misura per il controllo dell'inventario"
+msgstr "UdM è l'unità di misura per il controllo del magazzino"
 
 #. module: mrp
 #: model:product.product,uom_name:mrp.product_product_computer_desk
@@ -5000,11 +5001,11 @@ msgid ""
 "perfectly integrated into the process. Workers can trigger feedback loops, "
 "maintenance alerts, scrap products, etc."
 msgstr ""
-"Con il pannello di controllo del centro di lavoro di Odoo, il tuo lavoratore"
-" può avviare gli ordini di lavoro nel negozio e seguire le istruzioni del "
-"foglio di lavoro. I test di qualità sono perfettamente integrati nel "
-"processo. I lavoratori possono attivare cicli di feedback, avvisi di "
-"manutenzione, prodotti di scarto, ecc."
+"Con il pannello di controllo del centro di lavoro di Odoo, l'operatore può "
+"avviare gli ordini di lavoro in officina e seguire le istruzioni del foglio "
+"di lavoro. I test di qualità sono perfettamente integrati nel processo. Gli "
+"operatori possono attivare cicli di retroazione, avvisi di manutenzione, "
+"prodotti di scarto ecc..."
 
 #. module: mrp
 #: model:ir.model,name:mrp.model_mrp_consumption_warning

@@ -75,7 +75,7 @@ class HrExpense(models.Model):
     untaxed_amount = fields.Float("Subtotal", store=True, compute='_compute_amount', digits='Account')
     total_amount = fields.Monetary("Total", compute='_compute_amount', store=True, currency_field='currency_id', tracking=True)
     amount_residual = fields.Monetary(string='Amount Due', compute='_compute_amount_residual', compute_sudo=True)
-    company_currency_id = fields.Many2one('res.currency', string="Report Company Currency", related='sheet_id.currency_id', store=True, readonly=False)
+    company_currency_id = fields.Many2one('res.currency', string="Report Company Currency", related='company_id.currency_id', readonly=True)
     total_amount_company = fields.Monetary("Total (Company Currency)", compute='_compute_total_amount_company', store=True, currency_field='company_currency_id')
     company_id = fields.Many2one('res.company', string='Company', required=True, readonly=True, states={'draft': [('readonly', False)], 'refused': [('readonly', False)]}, default=lambda self: self.env.company)
     # TODO make required in master (sgv)
@@ -238,11 +238,15 @@ class HrExpense(models.Model):
             raise UserError(_("You need to have at least one product that can be expensed in your database to proceed!"))
 
         for attachment in attachments:
-            expense = self.env['hr.expense'].create({
+            vals = {
                 'name': attachment.name.split('.')[0],
                 'unit_amount': 0,
                 'product_id': product.id
-            })
+            }
+            if product.property_account_expense_id:
+                vals['account_id'] = product.property_account_expense_id.id
+
+            expense = self.env['hr.expense'].create(vals)
             expense.message_post(body=_('Uploaded Attachment'))
             attachment.write({
                 'res_model': 'hr.expense',
@@ -324,6 +328,8 @@ Or send your receipts at <a href="mailto:%(email)s?subject=Lunch%%20with%%20cust
             raise UserError(_("You cannot report expenses for different employees in the same report."))
         if any(not expense.product_id for expense in self):
             raise UserError(_("You can not create report without product."))
+        if len(self.company_id) != 1:
+            raise UserError(_("You cannot report expenses for different companies in the same report."))
 
         todo = self.filtered(lambda x: x.payment_mode=='own_account') or self.filtered(lambda x: x.payment_mode=='company_account')
         sheet = self.env['hr.expense.sheet'].create({
@@ -424,7 +430,7 @@ Or send your receipts at <a href="mailto:%(email)s?subject=Lunch%%20with%%20cust
             move_line_name = expense.employee_id.name + ': ' + expense.name.split('\n')[0][:64]
             account_src = expense._get_expense_account_source()
             account_dst = expense._get_expense_account_destination()
-            account_date = expense.sheet_id.accounting_date or expense.date or fields.Date.context_today(expense)
+            account_date = expense.date or expense.sheet_id.accounting_date or fields.Date.context_today(expense)
 
             company_currency = expense.company_id.currency_id
 
@@ -762,7 +768,13 @@ class HrExpenseSheet(models.Model):
         return self.env['account.journal'].search([('type', 'in', ['cash', 'bank']), ('company_id', '=', default_company_id)], limit=1)
 
     name = fields.Char('Expense Report Summary', required=True, tracking=True)
-    expense_line_ids = fields.One2many('hr.expense', 'sheet_id', string='Expense Lines', copy=False)
+    expense_line_ids = fields.One2many(
+        comodel_name='hr.expense',
+        inverse_name='sheet_id',
+        string='Expense Lines',
+        copy=False,
+        states={'post': [('readonly', True)], 'done': [('readonly', True)], 'cancel': [('readonly', True)]}
+    )
     state = fields.Selection([
         ('draft', 'Draft'),
         ('submit', 'Submitted'),

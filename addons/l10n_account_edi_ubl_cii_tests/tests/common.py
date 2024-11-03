@@ -7,6 +7,8 @@ from odoo.addons.account_edi.tests.common import AccountEdiTestCommon
 from odoo import fields
 from odoo.modules.module import get_resource_path
 from odoo.tests import tagged
+from odoo.tools import float_round
+
 from lxml import etree
 
 
@@ -26,6 +28,22 @@ class TestUBLCommon(AccountEdiTestCommon):
         # remove this tax, otherwise, at import, this tax with children taxes can be selected and the total is wrong
         cls.tax_armageddon.children_tax_ids.unlink()
         cls.tax_armageddon.unlink()
+
+        # Fixed Taxes
+        cls.recupel = cls.env['account.tax'].create({
+            'name': "RECUPEL",
+            'amount_type': 'fixed',
+            'amount': 1,
+            'include_base_amount': True,
+            'sequence': 1,
+        })
+        cls.auvibel = cls.env['account.tax'].create({
+            'name': "AUVIBEL",
+            'amount_type': 'fixed',
+            'amount': 1,
+            'include_base_amount': True,
+            'sequence': 2,
+        })
 
     @classmethod
     def setup_company_data(cls, company_name, chart_template=None, **kwargs):
@@ -94,6 +112,11 @@ class TestUBLCommon(AccountEdiTestCommon):
         # Create empty account.move, then update a file
         if move_type == 'in_invoice':
             invoice = self._create_empty_vendor_bill()
+        elif move_type == 'out_invoice':
+            invoice = self.env['account.move'].create({
+                'move_type': move_type,
+                'journal_id': self.company_data['default_journal_sale'].id,
+            })
         else:
             invoice = self.env['account.move'].create({
                 'move_type': move_type,
@@ -114,7 +137,8 @@ class TestUBLCommon(AccountEdiTestCommon):
         if list_line_price_unit:
             self.assertEqual(invoice.invoice_line_ids.mapped('price_unit'), list_line_price_unit)
         if list_line_discount:
-            self.assertEqual(invoice.invoice_line_ids.mapped('discount'), list_line_discount)
+            dp = self.env['decimal.precision'].precision_get("Discount")
+            self.assertListEqual([float_round(line.discount, precision_digits=dp) for line in invoice.invoice_line_ids], list_line_discount)
         if list_line_taxes:
             for line, taxes in zip(invoice.invoice_line_ids, list_line_taxes):
                 self.assertEqual(line.tax_ids, taxes)

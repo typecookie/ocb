@@ -880,6 +880,12 @@ header {
         max-height: 80vh;
         overflow-y: auto;
         overflow-x: hidden; // Needed because of container in container having 0px padding... TODO improve
+
+        @include media-breakpoint-down(md) {
+            .nav-link, .dropdown-item {
+                white-space: normal;
+            }
+        }
     }
 
     &:not(.o_header_is_scrolled) {
@@ -973,6 +979,9 @@ header {
                 } @else {
                     max-width: 560px;
                     text-align: left !important;
+                    @media (max-width: 560px) {
+                        max-width: 100%;
+                    }
                 }
                 min-width: 250px;
                 margin: 0 !important;
@@ -1232,7 +1241,7 @@ header {
 }
 
 #wrapwrap.o_header_overlay {
-    > header:not(.o_header_affixed):not(.o_top_menu_collapse_shown) {
+    > header:not(.o_header_affixed):not(.o_top_menu_collapse_shown):not(.o_header_sidebar) {
         @include o-position-absolute(0, 0, auto, 0);
         z-index: 1000;
 

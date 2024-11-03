@@ -18,7 +18,6 @@
 # Leon Grill <leg@odoo.com>, 2020
 # Jérôme JEK <jek@odoo.com>, 2020
 # Kevin Harrings <kha@odoo.com>, 2020
-# Caroline Renson <car@odoo.com>, 2021
 # Jigar Vaghela <jigar.vaghela@gmail.com>, 2021
 # EugenBrodskiSAMSAIT <eugen.brodski@samsa-it.de>, 2021
 # Andreas Jonderko <a.jonderko@gastronovi.com>, 2021
@@ -6715,6 +6714,16 @@ msgstr ""
 "(@mycompany.odoo.com) profitieren."
 
 #. module: mail
+#: code:addons/mail/models/ir_config_parameter.py:0
+#, python-format
+msgid ""
+"Value for `mail.catchall.domain.allowed` cannot be validated.\n"
+"It should be a comma separated list of domains e.g. example.com,example.org."
+msgstr ""
+"Wert für `mail.catchall.domain.allowed` kann nicht validiert werden.\n"
+"Es sollte eine durch Kommata getrennte Liste von Domains sein, z. B. example.com,example.org."
+
+#. module: mail
 #. openerp-web
 #: code:addons/mail/static/src/components/attachment_viewer/attachment_viewer.xml:0
 #: code:addons/mail/static/src/xml/thread.xml:0
@@ -7081,7 +7090,7 @@ msgstr "Du : "
 #: model_terms:ir.ui.view,arch_db:mail.mail_notification_light
 #: model_terms:ir.ui.view,arch_db:mail.mail_notification_paynow
 msgid "Your"
-msgstr "Ihr"
+msgstr "Ihr(e)"
 
 #. module: mail
 #. openerp-web
@@ -7426,7 +7435,7 @@ msgstr "mit"
 #: code:addons/mail/static/src/xml/many2one_avatar_user.xml:0
 #, python-format
 msgid "value"
-msgstr ""
+msgstr "Wert"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__weeks

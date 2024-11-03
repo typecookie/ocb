@@ -29,9 +29,9 @@
 # Antti Oksman <antti.oksman@web-veistamo.fi>, 2021
 # Miika Nissi <miika.nissi@tawasta.fi>, 2022
 # Joakim Weckman, 2022
-# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2023
-# Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2023
 # Tuomo Aura <tuomo.aura@web-veistamo.fi>, 2023
+# Ossi Mantylahti <ossi.mantylahti@obs-solutions.fi>, 2023
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
@@ -39,7 +39,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-27 11:23+0000\n"
 "PO-Revision-Date: 2020-09-07 08:14+0000\n"
-"Last-Translator: Tuomo Aura <tuomo.aura@web-veistamo.fi>, 2023\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2024\n"
 "Language-Team: Finnish (https://app.transifex.com/odoo/teams/41243/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -5688,14 +5688,14 @@ msgstr ""
 #: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #, python-format
 msgid "Shift left"
-msgstr ""
+msgstr "Siirry vasemmalle"
 
 #. module: mail
 #. openerp-web
 #: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #, python-format
 msgid "Shift right"
-msgstr ""
+msgstr "Vaihda oikealle"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__description
@@ -6106,7 +6106,7 @@ msgstr "Tilausasetusten käyttöönotto onnistui."
 #: model:ir.model.fields,help:mail.field_mail_template__model_id
 #: model:ir.model.fields,help:mail.field_mail_template_preview__model_id
 msgid "The type of document this template can be used with"
-msgstr ""
+msgstr "Asiakirjatyyppi, jonka kanssa tätä mallia voidaan käyttää"
 
 #. module: mail
 #. openerp-web
@@ -6389,7 +6389,7 @@ msgstr "Markkinointikiellon poistamisen syy: %s"
 #: code:addons/mail/static/src/components/follow_button/follow_button.xml:0
 #, python-format
 msgid "Unfollow"
-msgstr "Lopeta seuraaminen"
+msgstr "Älä seuraa"
 
 #. module: mail
 #: model:ir.model.constraint,message:mail.constraint_mail_alias_alias_unique
@@ -6625,6 +6625,16 @@ msgstr ""
 "Sähköpostien lähettäminen/vastaanottaminen Community- ja Enterprise-"
 "versioissa edellyttää oman sähköpostipalvelimen käyttöä. Online-käyttäjät "
 "hyötyvät jo valmiista sähköpostipalvelimesta (@mycompany.odoo.com)."
+
+#. module: mail
+#: code:addons/mail/models/ir_config_parameter.py:0
+#, python-format
+msgid ""
+"Value for `mail.catchall.domain.allowed` cannot be validated.\n"
+"It should be a comma separated list of domains e.g. example.com,example.org."
+msgstr ""
+"Arvoa `mail.catchall.domain.allowed` ei voida vahvistaa.\n"
+"Sen tulisi olla pilkulla erotettu luettelo verkkotunnuksista, esim. example.com,example.org."
 
 #. module: mail
 #. openerp-web
@@ -7334,7 +7344,7 @@ msgstr "käyttäen"
 #: code:addons/mail/static/src/xml/many2one_avatar_user.xml:0
 #, python-format
 msgid "value"
-msgstr ""
+msgstr "arvo"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__weeks

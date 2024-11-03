@@ -13,7 +13,6 @@ class MailTestSimple(models.Model):
 
     name = fields.Char()
     email_from = fields.Char()
-    message_bounce = fields.Integer(default=0)
 
 
 class MailTestGateway(models.Model):
@@ -27,6 +26,16 @@ class MailTestGateway(models.Model):
     name = fields.Char()
     email_from = fields.Char()
     custom_field = fields.Char()
+
+    @api.model
+    def message_new(self, msg_dict, custom_values=None):
+        """ Check override of 'message_new' allowing to update record values
+        base on incoming email. """
+        defaults = {
+            'email_from': msg_dict.get('from'),
+        }
+        defaults.update(custom_values or {})
+        return super().message_new(msg_dict, custom_values=defaults)
 
 
 class MailTestGatewayGroups(models.Model):

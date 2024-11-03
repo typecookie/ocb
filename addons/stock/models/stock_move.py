@@ -72,7 +72,7 @@ class StockMove(models.Model):
     # TDE FIXME: make it stored, otherwise group will not work
     product_tmpl_id = fields.Many2one(
         'product.template', 'Product Template',
-        related='product_id.product_tmpl_id', readonly=False,
+        related='product_id.product_tmpl_id', readonly=True,
         help="Technical: used in views")
     location_id = fields.Many2one(
         'stock.location', 'Source Location',
@@ -1271,6 +1271,7 @@ class StockMove(models.Model):
             if float_compare(taken_quantity, int(taken_quantity), precision_digits=rounding) != 0:
                 taken_quantity = 0
 
+        self.env['base'].flush()
         try:
             with self.env.cr.savepoint():
                 if not float_is_zero(taken_quantity, precision_rounding=self.product_id.uom_id.rounding):
@@ -1613,7 +1614,7 @@ class StockMove(models.Model):
         :returns: list of dict. stock move values """
         self.ensure_one()
         if self.state in ('done', 'cancel'):
-            raise UserError(_('You cannot split a stock move that has been set to \'Done\'.'))
+            raise UserError(_('You cannot split a stock move that has been set to \'Done\' or \'Cancel\'.'))
         elif self.state == 'draft':
             # we restrict the split of a draft move because if not confirmed yet, it may be replaced by several other moves in
             # case of phantom bom (with mrp module). And we don't want to deal with this complexity by copying the product that will explode.

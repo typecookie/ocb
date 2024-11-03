@@ -46,7 +46,7 @@ class AccountAnalyticLine(models.Model):
 
     task_id = fields.Many2one(
         'project.task', 'Task', compute='_compute_task_id', store=True, readonly=False, index=True,
-        domain="[('company_id', '=', company_id), ('project_id.allow_timesheets', '=', True), ('project_id', '=?', project_id)]")
+        domain="[('project_id.allow_timesheets', '=', True), ('project_id', '=?', project_id)]")
     project_id = fields.Many2one(
         'project.project', 'Project', compute='_compute_project_id', store=True, readonly=False,
         domain=_domain_project_id)
@@ -176,7 +176,7 @@ class AccountAnalyticLine(models.Model):
                     '|', '|', '|',
                         ('task_id.project_id.message_partner_ids', 'child_of', [self.env.user.partner_id.commercial_partner_id.id]),
                         ('task_id.message_partner_ids', 'child_of', [self.env.user.partner_id.commercial_partner_id.id]),
-                        ('task_id.project_id.allowed_portal_user_ids', 'child_of', [self.env.user.id]),
+                        ('task_id.project_id.allowed_portal_user_ids', 'in', [self.env.user.id]),
                         ('task_id.allowed_user_ids', 'in', [self.env.user.id]),
                     ('task_id.project_id.privacy_visibility', '=', 'portal'),
                 '&',
@@ -184,7 +184,7 @@ class AccountAnalyticLine(models.Model):
                     '&',
                         '|',
                             ('project_id.message_partner_ids', 'child_of', [self.env.user.partner_id.commercial_partner_id.id]),
-                            ('project_id.allowed_portal_user_ids', 'child_of', [self.env.user.id]),
+                            ('project_id.allowed_portal_user_ids', 'in', [self.env.user.id]),
                         ('project_id.privacy_visibility', '=', 'portal')
         ]
 

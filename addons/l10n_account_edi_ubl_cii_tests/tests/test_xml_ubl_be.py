@@ -49,6 +49,7 @@ class TestUBLBE(TestUBLCommon):
             'amount_type': 'percent',
             'amount': 21,
             'type_tax_use': 'sale',
+            'sequence': 10,
         })
 
         cls.tax_15 = cls.env['account.tax'].create({
@@ -62,6 +63,13 @@ class TestUBLBE(TestUBLCommon):
             'name': 'tax_12',
             'amount_type': 'percent',
             'amount': 12,
+            'type_tax_use': 'sale',
+        })
+
+        cls.tax_0 = cls.env['account.tax'].create({
+            'name': 'tax_0',
+            'amount_type': 'percent',
+            'amount': 0,
             'type_tax_use': 'sale',
         })
 
@@ -249,6 +257,106 @@ class TestUBLBE(TestUBLCommon):
             expected_file='from_odoo/bis3_out_invoice_public_admin.xml',
         )
 
+    def test_rounding_price_unit(self):
+        """ OpenPeppol states that:
+        * All document level amounts shall be rounded to two decimals for accounting
+        * Invoice line net amount shall be rounded to two decimals
+        See: https://docs.peppol.eu/poacc/billing/3.0/bis/#_rounding
+        Do not round the unit prices. It allows to obtain the correct line amounts when prices have more than 2
+        digits.
+        """
+        # Set the allowed number of digits for the price_unit
+        decimal_precision = self.env['decimal.precision'].search([('name', '=', 'Product Price')], limit=1)
+        self.assertTrue(bool(decimal_precision), "The decimal precision for Product Price is required for this test")
+        decimal_precision.digits = 4
+
+        invoice = self._generate_move(
+            self.partner_1,
+            self.partner_2,
+            move_type='out_invoice',
+            invoice_line_ids=[
+                {
+                    'product_id': self.product_a.id,
+                    'quantity': 10000,
+                    'price_unit': 0.4567,
+                    'tax_ids': [(6, 0, self.tax_21.ids)],
+                }
+            ],
+        )
+        self._assert_invoice_attachment(invoice, None, 'from_odoo/bis3_out_invoice_rounding.xml')
+
+    def test_export_with_fixed_taxes_case1(self):
+        # CASE 1: simple invoice with a recupel tax
+        invoice = self._generate_move(
+            self.partner_1,
+            self.partner_2,
+            move_type='out_invoice',
+            invoice_line_ids=[
+                {
+                    'product_id': self.product_a.id,
+                    'quantity': 1,
+                    'price_unit': 99,
+                    'tax_ids': [(6, 0, [self.recupel.id, self.tax_21.id])],
+                }
+            ],
+        )
+        self.assertEqual(invoice.amount_total, 121)
+        self._assert_invoice_attachment(invoice, None, 'from_odoo/bis3_ecotaxes_case1.xml')
+
+    def test_export_with_fixed_taxes_case2(self):
+        # CASE 2: Same but with several ecotaxes
+        invoice = self._generate_move(
+            self.partner_1,
+            self.partner_2,
+            move_type='out_invoice',
+            invoice_line_ids=[
+                {
+                    'product_id': self.product_a.id,
+                    'quantity': 1,
+                    'price_unit': 98,
+                    'tax_ids': [(6, 0, [self.recupel.id, self.auvibel.id, self.tax_21.id])],
+                }
+            ],
+        )
+        self.assertEqual(invoice.amount_total, 121)
+        self._assert_invoice_attachment(invoice, None, 'from_odoo/bis3_ecotaxes_case2.xml')
+
+    def test_export_with_fixed_taxes_case3(self):
+        # CASE 3: same as Case 1 but taxes are Price Included
+        self.recupel.price_include = True
+        self.tax_21.price_include = True
+
+        # Price TTC = 121 = (99 + 1 ) * 1.21
+        invoice = self._generate_move(
+            self.partner_1,
+            self.partner_2,
+            move_type='out_invoice',
+            invoice_line_ids=[
+                {
+                    'product_id': self.product_a.id,
+                    'quantity': 1,
+                    'price_unit': 121,
+                    'tax_ids': [(6, 0, [self.recupel.id, self.tax_21.id])],
+                }
+            ],
+        )
+        self.assertEqual(invoice.amount_total, 121)
+        self._assert_invoice_attachment(invoice, None, 'from_odoo/bis3_ecotaxes_case3.xml')
+
+    def test_export_tax_exempt(self):
+        invoice = self._generate_move(
+            self.partner_1,
+            self.partner_2,
+            move_type='out_invoice',
+            invoice_line_ids=[
+                {
+                    'product_id': self.product_a.id,
+                    'price_unit': 990.0,
+                    'tax_ids': [(6, 0, self.tax_0.ids)],
+                },
+            ],
+        )
+        self._assert_invoice_attachment(invoice, None, 'from_odoo/bis3_out_invoice_tax_exempt.xml')
 
     ####################################################
     # Test import
@@ -329,8 +437,18 @@ class TestUBLBE(TestUBLCommon):
         self.assertTrue(created_bill)
 
     def test_import_invoice_xml(self):
-        self._assert_imported_invoice_from_file(subfolder='tests/test_files/from_odoo', filename='bis3_out_invoice.xml',
-            amount_total=3164.22, amount_tax=482.22, list_line_subtotals=[1782, 1000, -100], currency_id=self.currency_data['currency'].id)
+        kwargs = {
+            'subfolder': 'tests/test_files/from_odoo',
+            'amount_total': 3164.22,
+            'amount_tax': 482.22,
+            'list_line_subtotals': [1782, 1000, -100],
+            'list_line_price_unit': [990, 100, 100],
+            'list_line_discount': [10, 0, 0],
+            'currency_id': self.currency_data['currency'].id,
+        }
+        self._assert_imported_invoice_from_file(filename='bis3_out_invoice.xml', **kwargs)
+        # same as the file above, but the <cac:Price> are missing in the invoice lines
+        self._assert_imported_invoice_from_file(filename='bis3_out_invoice_no_prices.xml', **kwargs)
 
     def test_import_invoice_xml_open_peppol_examples(self):
         # Source: https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
@@ -362,3 +480,27 @@ class TestUBLBE(TestUBLCommon):
             invoice,
         )
         self.assertRecordValues(invoice, [{'move_type': 'out_refund', 'amount_total': 3164.22}])
+
+    def test_import_fixed_taxes(self):
+        """ Tests whether we correctly decode the xml attachments created using fixed taxes.
+        See the tests above to create these xml attachments ('test_export_with_fixed_taxes_case_[X]').
+        NB: use move_type = 'out_invoice' s.t. we can retrieve the taxes used to create the invoices.
+        """
+        subfolder = "tests/test_files/from_odoo"
+        # The tax 21% from l10n_be is retrieved since it's a duplicate of self.tax_21
+        tax_21 = self.env.ref(f'l10n_be.{self.env.company.id}_attn_VAT-OUT-21-L')
+        self._assert_imported_invoice_from_file(
+            subfolder=subfolder, filename='bis3_ecotaxes_case1.xml', amount_total=121, amount_tax=22,
+            list_line_subtotals=[99], currency_id=self.currency_data['currency'].id, list_line_price_unit=[99],
+            list_line_discount=[0], list_line_taxes=[tax_21+self.recupel], move_type='out_invoice',
+        )
+        self._assert_imported_invoice_from_file(
+            subfolder=subfolder, filename='bis3_ecotaxes_case2.xml', amount_total=121, amount_tax=23,
+            list_line_subtotals=[98], currency_id=self.currency_data['currency'].id, list_line_price_unit=[98],
+            list_line_discount=[0], list_line_taxes=[tax_21+self.recupel+self.auvibel], move_type='out_invoice',
+        )
+        self._assert_imported_invoice_from_file(
+            subfolder=subfolder, filename='bis3_ecotaxes_case3.xml', amount_total=121, amount_tax=22,
+            list_line_subtotals=[99], currency_id=self.currency_data['currency'].id, list_line_price_unit=[99],
+            list_line_discount=[0], list_line_taxes=[tax_21+self.recupel], move_type='out_invoice',
+        )

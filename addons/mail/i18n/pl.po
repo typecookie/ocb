@@ -137,7 +137,7 @@ msgstr "%sod %s"
 #: code:addons/mail/static/src/components/notification_request/notification_request.js:0
 #, python-format
 msgid "%s has a request"
-msgstr ""
+msgstr "%s ma wniosek"
 
 #. module: mail
 #. openerp-web
@@ -1115,7 +1115,7 @@ msgstr "Treść"
 #: code:addons/mail/static/src/widgets/common.xml:0
 #, python-format
 msgid "Bot"
-msgstr ""
+msgstr "Bot"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_thread_blacklist__message_bounce
@@ -1188,12 +1188,12 @@ msgstr "Anuluj powiadomienie w przypadku niepowodzenia"
 #: model:ir.model.fields.selection,name:mail.selection__mail_notification__notification_status__canceled
 #, python-format
 msgid "Canceled"
-msgstr "Anulowano"
+msgstr "Anulowane"
 
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_mail__state__cancel
 msgid "Cancelled"
-msgstr "Anulowano"
+msgstr "Anulowane"
 
 #. module: mail
 #: model:ir.model,name:mail.model_mail_shortcode
@@ -1214,7 +1214,7 @@ msgstr "Odbiorcy kopii wiadomości"
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_template_preview__email_cc
 msgid "Carbon copy recipients"
-msgstr ""
+msgstr "Odbiorcy kalki"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_mail_template__email_cc
@@ -1224,7 +1224,7 @@ msgstr "Kopia (można stosować wyrażenia)"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_res_company__catchall_formatted
 msgid "Catchall"
-msgstr ""
+msgstr "Catchall"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_res_company__catchall_email
@@ -2793,6 +2793,8 @@ msgstr "Ukryj podtyp w opcjach obserwatorów"
 msgid ""
 "Hide to public / portal users, independently from subtype configuration."
 msgstr ""
+"Ukrycie dla użytkowników publicznych / portalowych, niezależnie od "
+"konfiguracji podtypu."
 
 #. module: mail
 #. openerp-web
@@ -4556,6 +4558,7 @@ msgstr "Tylko administratorzy mogą eksportować wiadomość mail."
 #, python-format
 msgid "Only administrators are allowed to use grouped read on message model"
 msgstr ""
+"Tylko administratorzy mogą używać grupowego odczytu na modelu wiadomości"
 
 #. module: mail
 #: code:addons/mail/models/mail_channel.py:0
@@ -5345,7 +5348,7 @@ msgstr "Nazwa pliki raportu"
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_activity__request_partner_id
 msgid "Requesting Partner"
-msgstr ""
+msgstr "Partner żądający"
 
 #. module: mail
 #: model:ir.actions.act_window,name:mail.mail_resend_message_action
@@ -5709,7 +5712,7 @@ msgstr "Wysłane"
 #: model:ir.model.fields,field_description:mail.field_mail_activity_type__sequence
 #: model:ir.model.fields,field_description:mail.field_mail_message_subtype__sequence
 msgid "Sequence"
-msgstr "Numeracja"
+msgstr "Sekwencja"
 
 #. module: mail
 #: model:ir.model,name:mail.model_ir_actions_server
@@ -5726,14 +5729,14 @@ msgstr "Ustaw aktywne na fałsz aby ukryć kanał bez usuwania go"
 #: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #, python-format
 msgid "Shift left"
-msgstr ""
+msgstr "Przesunięcie w lewo"
 
 #. module: mail
 #. openerp-web
 #: code:addons/mail/static/src/components/chat_window_header/chat_window_header.xml:0
 #, python-format
 msgid "Shift right"
-msgstr ""
+msgstr "Przesunięcie w prawo"
 
 #. module: mail
 #: model:ir.model.fields,field_description:mail.field_mail_mail__description
@@ -5976,6 +5979,8 @@ msgid ""
 "Technical field to keep track of the model at the start of editing to "
 "support UX related behaviour"
 msgstr ""
+"Pole techniczne do śledzenia modelu na początku edycji, aby wspierać "
+"zachowanie związane z UX"
 
 #. module: mail
 #: model:ir.model.fields,help:mail.field_ir_actions_server__activity_user_field_name
@@ -6207,6 +6212,9 @@ msgid ""
 "including from the Technical menu in the Settings, in order to preserve "
 "storage space of your Odoo database."
 msgstr ""
+"Opcja ta trwale usuwa wszelkie ślady wiadomości e-mail po ich wysłaniu, w "
+"tym z menu technicznego w Ustawieniach, w celu zachowania przestrzeni "
+"dyskowej bazy danych Odoo."
 
 #. module: mail
 #. openerp-web
@@ -6671,6 +6679,16 @@ msgstr ""
 "Korzystanie z własnego serwera e-mail jest wymagane do wysyłania / "
 "odbierania wiadomości e-mail w wersjach Community i Enterprise. Użytkownicy "
 "online korzystają z gotowego do użycia serwera e-mail (@mycompany.odoo.com)."
+
+#. module: mail
+#: code:addons/mail/models/ir_config_parameter.py:0
+#, python-format
+msgid ""
+"Value for `mail.catchall.domain.allowed` cannot be validated.\n"
+"It should be a comma separated list of domains e.g. example.com,example.org."
+msgstr ""
+"Wartość dla `mail.catchall.domain.allowed` nie może zostać zweryfikowana.\n"
+"Powinna to być oddzielona przecinkami lista domen, np. example.com,example.org."
 
 #. module: mail
 #. openerp-web
@@ -7148,7 +7166,7 @@ msgstr ""
 #: code:addons/mail/static/src/components/message/message.xml:0
 #, python-format
 msgid "channel"
-msgstr ""
+msgstr "kanał"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_channel_send_guidelines
@@ -7191,7 +7209,7 @@ msgstr "do"
 #: code:addons/mail/static/src/components/activity/activity.js:0
 #, python-format
 msgid "for %s"
-msgstr ""
+msgstr "dla %s"
 
 #. module: mail
 #: model:mail.channel,name:mail.channel_all_employees
@@ -7206,7 +7224,7 @@ msgstr "został utworzony z:"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.message_origin_link
 msgid "has been modified from:"
-msgstr ""
+msgstr "został zmodyfikowany z:"
 
 #. module: mail
 #: code:addons/mail/models/models.py:0
@@ -7223,7 +7241,7 @@ msgstr "niepoprawnie skonfigurowany alias (nieznany rekord referencyjny)"
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.mail_blacklist_remove_view_form
 msgid "mail_blacklist_removal"
-msgstr ""
+msgstr "mail_blacklist_removal"
 
 #. module: mail
 #: code:addons/mail/models/mail_thread.py:0
@@ -7234,7 +7252,7 @@ msgstr "model %s nie akceptuje tworzenia dokumentu"
 #. module: mail
 #: model:ir.model.fields.selection,name:mail.selection__mail_activity_type__delay_unit__months
 msgid "months"
-msgstr "miesięcy"
+msgstr "miesiące"
 
 #. module: mail
 #: model_terms:ir.ui.view,arch_db:mail.res_config_settings_view_form
@@ -7262,7 +7280,7 @@ msgstr "na"
 #: code:addons/mail/static/src/components/composer/composer.xml:0
 #, python-format
 msgid "on:"
-msgstr ""
+msgstr "na:"
 
 #. module: mail
 #. openerp-web
@@ -7304,6 +7322,8 @@ msgid ""
 "reply to missing document (%(model)s,%(thread)s), fall back on document "
 "creation"
 msgstr ""
+"odpowiedź na brakujący dokument (%(model)s,%(thread)s), powrót do tworzenia "
+"dokumentu"
 
 #. module: mail
 #: code:addons/mail/models/mail_thread.py:0

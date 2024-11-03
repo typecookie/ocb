@@ -12,9 +12,8 @@
 # Jorge Luis Alfonso <jlalfonso21@gmail.com>, 2020
 # Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com.mx>, 2021
 # José Cabrera Lozano <jose.cabrera@edukative.es>, 2021
-# jabelchi, 2021
+# Josep Anton Belchi, 2021
 # Braulio D. López Vázquez <bdl@odoo.com>, 2021
-# Patricia Gutiérrez Capetillo <pagc@odoo.com>, 2021
 # Daniela Cervantes <dace@odoo.com>, 2021
 # Nelson Ramírez <info@konos.cl>, 2021
 # Rick Hunter <rick.hunter.ec@gmail.com>, 2021
@@ -25,6 +24,7 @@
 # marcescu, 2022
 # Víctor Martínez <victor.martinez@tecnativa.com>, 2022
 # Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2022
+# Patricia Gutiérrez Capetillo <pagc@odoo.com>, 2023
 # Pedro M. Baeza <pedro.baeza@tecnativa.com>, 2023
 # 
 msgid ""
@@ -2123,7 +2123,7 @@ msgstr ""
 #: code:addons/mrp/models/mrp_production.py:0
 #, python-format
 msgid "Invalid domain operator %s"
-msgstr "Dominio inválido para el operante %s"
+msgstr "Operador de dominio inválido %s"
 
 #. module: mrp
 #: code:addons/mrp/models/mrp_production.py:0
@@ -4572,7 +4572,7 @@ msgstr "A Procesar"
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_production_form_view
 #: model_terms:ir.ui.view,arch_db:mrp.view_stock_move_operations_finished
 msgid "To Produce"
-msgstr "Fabricar"
+msgstr "Por producir"
 
 #. module: mrp
 #: model_terms:ir.ui.view,arch_db:mrp.mrp_unbuild_search_view

@@ -3,9 +3,11 @@
 # 	* website_event
 # 
 # Translators:
-# Mandy Choy <mnc@odoo.com>, 2021
 # Ryan Wu <ryan.wu@dobtor.com>, 2021
 # 敬雲 林 <chingyun@yuanchih-consult.com>, 2021
+# Martin Trigaux, 2023
+# Wil Odoo, 2023
+# Tony Ng, 2024
 # 
 msgid ""
 msgstr ""
@@ -13,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-26 16:27+0000\n"
 "PO-Revision-Date: 2020-09-07 08:20+0000\n"
-"Last-Translator: 敬雲 林 <chingyun@yuanchih-consult.com>, 2021\n"
+"Last-Translator: Tony Ng, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/odoo/teams/41243/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,17 +26,17 @@ msgstr ""
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_website_visitor__event_registration_count
 msgid "# Registrations"
-msgstr "# 活動報名"
+msgstr "報名數目"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_template
 msgid "(only"
-msgstr "(only"
+msgstr "（只限"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_complete
 msgid "(ref:"
-msgstr ""
+msgstr "（參考編號："
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.snippet_options
@@ -80,7 +82,7 @@ msgstr "<font style=\"font-size: 62px;\" class=\"o_default_snippet_text\">介紹
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_template
 msgid "<i class=\"fa fa-ban mr-2\"/>Sold Out"
-msgstr "<i class=\"fa fa-ban mr-2\"/>已完售"
+msgstr "<i class=\"fa fa-ban mr-2\"/>售完"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.events_list
@@ -120,7 +122,7 @@ msgstr "<i class=\"fa fa-fw fa-calendar\"/> 添加到 iCal/Outlook"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.index_sidebar_follow_us
 msgid "<i class=\"fa fa-github text-github\" aria-label=\"Github\" title=\"Github\"/>"
-msgstr "<i class=\"fa fa-github text-github\" aria-label=\"Github\" title=\"Github\"/>"
+msgstr "<i class=\"fa fa-github text-github\" aria-label=\"GitHub\" title=\"GitHub\"/>"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.country_events_list
@@ -177,8 +179,8 @@ msgid ""
 "<i class=\"fa fa-youtube-play text-youtube\" aria-label=\"Youtube\" "
 "title=\"Youtube\"/>"
 msgstr ""
-"<i class=\"fa fa-youtube-play text-youtube\" aria-label=\"Youtube\" "
-"title=\"Youtube\"/>"
+"<i class=\"fa fa-youtube-play text-youtube\" aria-label=\"YouTube\" "
+"title=\"YouTube\"/>"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.s_speaker_bio
@@ -263,7 +265,7 @@ msgid ""
 "                                </span>"
 msgstr ""
 "<span itemprop=\"availability\" content=\"http://schema.org/SoldOut\" class=\"text-danger\">\n"
-"                                    <i class=\"fa fa-ban mr-2\"/>完售\n"
+"                                    <i class=\"fa fa-ban mr-2\"/> 售完\n"
 "                                </span>"
 
 #. module: website_event
@@ -295,7 +297,7 @@ msgstr "增添報名按鈕"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "Add to Calendar"
-msgstr "添加到日曆"
+msgstr "加入至日曆"
 
 #. module: website_event
 #: code:addons/website_event/controllers/main.py:0
@@ -327,7 +329,7 @@ msgstr ""
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_attendee_details
 msgid "Attendees"
-msgstr "參會者"
+msgstr "參加者"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.index_sidebar_quotes
@@ -451,7 +453,7 @@ msgstr ""
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "Date &amp; Time"
-msgstr "日期和時間"
+msgstr "日期及時間"
 
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_event_event__display_name
@@ -492,12 +494,12 @@ msgstr "拖動此區塊並放在您的頁面中。"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_attendee_details
 msgid "Email"
-msgstr "Email"
+msgstr "電郵"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "End -"
-msgstr "結束時間 -"
+msgstr "結束 -"
 
 #. module: website_event
 #: model:ir.model,name:website_event.model_event_event
@@ -601,7 +603,7 @@ msgstr "過期"
 msgid ""
 "Find out what people see and say about this event, and join the "
 "conversation."
-msgstr "瞭解人們對此活動的，並加入對話。"
+msgstr "了解其他人對本活動正談論甚麼，加入對話。"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.index_sidebar_follow_us
@@ -616,7 +618,7 @@ msgstr "以下內容將出現在所有活動中."
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "Get the direction"
-msgstr "獲取方向"
+msgstr "取得路線"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
@@ -663,7 +665,7 @@ msgstr "已發佈"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.s_speaker_bio
 msgid "John DOE"
-msgstr "John DOE"
+msgstr "陳大文"
 
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_event_event____last_update
@@ -735,7 +737,7 @@ msgstr "不適用"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_attendee_details
 msgid "Name"
-msgstr "名稱"
+msgstr "名字"
 
 #. module: website_event
 #. openerp-web
@@ -765,7 +767,7 @@ msgstr "按下\"保存\"後,您的活動將更新。"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "Organizer"
-msgstr "組織者"
+msgstr "舉辦方"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.index_sidebar_photos
@@ -803,7 +805,7 @@ msgstr "請至少選擇一個票券"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_event_view_form
 msgid "Preview Badges"
-msgstr "預覽徽章"
+msgstr "預覽識別證"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.res_config_settings_view_form
@@ -924,7 +926,7 @@ msgstr "查看所有活動來自"
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_event_event__seo_name
 msgid "Seo name"
-msgstr "Seo 名稱"
+msgstr "SEO 名稱"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.events_list
@@ -940,7 +942,7 @@ msgstr "對不起，請求的活動已經失效。"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "Start -"
-msgstr "開始時間 -"
+msgstr "開始 -"
 
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_event_event__start_today
@@ -969,12 +971,12 @@ msgstr "此方式將快速帶您回到活動表單。"
 #: code:addons/website_event/controllers/main.py:0
 #, python-format
 msgid "This ticket is not available for sale for this event"
-msgstr ""
+msgstr "此活動門票不作發售"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_attendee_details
 msgid "Ticket #"
-msgstr "票券 #"
+msgstr "門票編號"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_template
@@ -984,7 +986,7 @@ msgstr "售票開始於"
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_template
 msgid "Tickets for this Event are <b>Sold Out</b>"
-msgstr "此活動之票券已 <b>完售</b>"
+msgstr "本次活動門票<b>已售完</b>"
 
 #. module: website_event
 #: code:addons/website_event/controllers/main.py:0
@@ -1086,12 +1088,12 @@ msgstr "網站子選單"
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_event_event__website_url
 msgid "Website URL"
-msgstr "網站URL"
+msgstr "網站網址"
 
 #. module: website_event
 #: model:ir.model,name:website_event.model_website_visitor
 msgid "Website Visitor"
-msgstr "網站訪問者"
+msgstr "網站訪客"
 
 #. module: website_event
 #: model:ir.model.fields,field_description:website_event.field_event_event__website_meta_description
@@ -1140,9 +1142,9 @@ msgstr "使用“編輯”按鈕，您可以<b>自定義</b>訪問者在註冊�
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.registration_template
 msgid "available)"
-msgstr "available)"
+msgstr "可用）"
 
 #. module: website_event
 #: model_terms:ir.ui.view,arch_db:website_event.event_description_full
 msgid "iCal/Outlook"
-msgstr "iCal/Outlook"
+msgstr "iCal / Outlook"

@@ -1003,7 +1003,7 @@ msgstr "Reparaturauftrags-Tags"
 #. module: repair
 #: model_terms:ir.ui.view,arch_db:repair.report_repairorder
 msgid "Repair Quotation #:"
-msgstr "Reparatur Kostenvoranschlags #:"
+msgstr "Reparaturkostenvoranschlag #:"
 
 #. module: repair
 #: model:ir.model.fields,field_description:repair.field_repair_order__name
@@ -1374,7 +1374,7 @@ msgstr "Sie können einen abgeschlossenen Reparaturauftrag nicht stornieren,"
 #: code:addons/repair/models/repair.py:0
 #, python-format
 msgid "You cannot delete a completed repair order."
-msgstr ""
+msgstr "Sie können einen abgeschlossenen Reparaturauftrag nicht löschen."
 
 #. module: repair
 #: code:addons/repair/models/repair.py:0 code:addons/repair/models/repair.py:0

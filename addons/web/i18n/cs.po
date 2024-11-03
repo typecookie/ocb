@@ -14,6 +14,9 @@
 # Damian Brencic <brencicdamian12313@gmail.com>, 2021
 # rastislav Brencic <rastislav.brencic99@gmail.com>, 2021
 # Jiří Podhorecký, 2021
+# Tomáš Píšek, 2023
+# Jakub Smolka, 2023
+# Aleš Fiala <f.ales1@seznam.cz>, 2023
 # 
 msgid ""
 msgstr ""
@@ -21,7 +24,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-25 10:30+0000\n"
 "PO-Revision-Date: 2020-09-07 08:19+0000\n"
-"Last-Translator: Jiří Podhorecký, 2021\n"
+"Last-Translator: Aleš Fiala <f.ales1@seznam.cz>, 2023\n"
 "Language-Team: Czech (https://app.transifex.com/odoo/teams/41243/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -474,7 +477,7 @@ msgstr "Aktivace ladění položek"
 #: code:addons/web/static/src/xml/debug.xml:0
 #, python-format
 msgid "Activate Tests Assets Debugging"
-msgstr ""
+msgstr "Aktivovat debugging testovacích assetů"
 
 #. module: web
 #. openerp-web
@@ -1306,7 +1309,7 @@ msgstr "Nemohu serializovat XML"
 msgid ""
 "Could not set the cover image: incorrect field (\"%s\") is provided in the "
 "view."
-msgstr ""
+msgstr "Nelze nastavit úvodní obrázek: v zobrazení je nesprávné pole („%s“)."
 
 #. module: web
 #. openerp-web
@@ -1630,7 +1633,7 @@ msgstr "Doména"
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "Domain node"
-msgstr ""
+msgstr "Uzel domény"
 
 #. module: web
 #. openerp-web
@@ -2463,21 +2466,21 @@ msgstr "Spravovat filtry"
 #: code:addons/web/static/src/js/fields/relational_fields.js:0
 #, python-format
 msgid "Many2many"
-msgstr ""
+msgstr "Many2many"
 
 #. module: web
 #. openerp-web
 #: code:addons/web/static/src/js/fields/relational_fields.js:0
 #, python-format
 msgid "Many2one"
-msgstr ""
+msgstr "Many2one"
 
 #. module: web
 #. openerp-web
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "Match"
-msgstr ""
+msgstr "Shoda"
 
 #. module: web
 #. openerp-web
@@ -2557,7 +2560,7 @@ msgstr "Prístup k modelu"
 #: code:addons/web/static/src/js/tools/debug_manager_backend.js:0
 #, python-format
 msgid "Model Record Rules"
-msgstr ""
+msgstr "Přístupová pravidla modelu"
 
 #. module: web
 #. openerp-web
@@ -2896,7 +2899,7 @@ msgstr "Při změně:"
 #: code:addons/web/static/src/js/fields/relational_fields.js:0
 #, python-format
 msgid "One2many"
-msgstr ""
+msgstr "One2many"
 
 #. module: web
 #: code:addons/web/controllers/main.py:0
@@ -2920,6 +2923,8 @@ msgid ""
 "Only types %(supported_types)s are supported for category (found type "
 "%(field_type)s)"
 msgstr ""
+"Pouze typy %(supported_types)s jsou podporovány pro kategorii (nalezený typ "
+"%(field_type)s)"
 
 #. module: web
 #: code:addons/web/models/models.py:0
@@ -2957,7 +2962,7 @@ msgstr ""
 #: code:addons/web/static/src/xml/debug.xml:0
 #, python-format
 msgid "Open View"
-msgstr ""
+msgstr "Otevřít zobrazení"
 
 #. module: web
 #. openerp-web
@@ -3003,7 +3008,7 @@ msgstr "Otevřít: "
 #: code:addons/web/static/src/js/views/list/list_renderer.js:0
 #, python-format
 msgid "Optional columns"
-msgstr ""
+msgstr "Volitelné sloupce"
 
 #. module: web
 #. openerp-web
@@ -3059,7 +3064,7 @@ msgstr "Strana: <span class=\"page\"/> / <span class=\"topage\"/>"
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "Pager"
-msgstr ""
+msgstr "Pager"
 
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__paperformat_id
@@ -3224,12 +3229,12 @@ msgstr "Náhled"
 #. module: web
 #: model:ir.actions.report,name:web.action_report_externalpreview
 msgid "Preview External Report"
-msgstr ""
+msgstr "Náhled externího výkazu"
 
 #. module: web
 #: model:ir.actions.report,name:web.action_report_internalpreview
 msgid "Preview Internal Report"
-msgstr ""
+msgstr "Náhled interního výkazu"
 
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__preview_logo
@@ -3404,14 +3409,14 @@ msgstr "Červená"
 #: code:addons/web/static/src/xml/debug.xml:0
 #, python-format
 msgid "Regenerate Assets Bundles"
-msgstr ""
+msgstr "Regenerovat balíčky assetů"
 
 #. module: web
 #. openerp-web
 #: code:addons/web/static/src/js/widgets/model_field_selector.js:0
 #, python-format
 msgid "Relation not allowed"
-msgstr ""
+msgstr "Vztah není povolen"
 
 #. module: web
 #. openerp-web
@@ -3790,7 +3795,7 @@ msgstr "Klávesové zkratky"
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "Show sub-fields"
-msgstr ""
+msgstr "Zobrazit podřízená pole"
 
 #. module: web
 #. openerp-web
@@ -3986,6 +3991,8 @@ msgid ""
 "The content of this cell is too long for an XLSX file (more than %s "
 "characters). Please use the CSV format for this export."
 msgstr ""
+"Obsah této buňky je pro soubor XLSX příliš dlouhý (více než %s znaků). Pro "
+"tento export použijte prosím formát CSV."
 
 #. module: web
 #. openerp-web
@@ -4051,6 +4058,8 @@ msgid ""
 "There are too many rows (%s rows, limit: %s) to export as Excel 2007-2013 "
 "(.xlsx) format. Consider splitting the export."
 msgstr ""
+"Je příliš mnoho řádků (%s řádků, limit: %s) pro export do formátu Excel "
+"2007-2013 (.xlsx). Zvažte rozdělení exportu."
 
 #. module: web
 #. openerp-web
@@ -4355,7 +4364,7 @@ msgstr "Upgrade na budoucí verze"
 #: code:addons/web/static/src/js/views/kanban/kanban_record.js:0
 #, python-format
 msgid "Upload and Set"
-msgstr ""
+msgstr "Nahrát a nastavit"
 
 #. module: web
 #. openerp-web
@@ -4415,7 +4424,7 @@ msgstr "Nahrávání... (%s%%)"
 #: code:addons/web/static/src/js/views/kanban/kanban_column_quick_create.js:0
 #, python-format
 msgid "Use This For My Kanban"
-msgstr ""
+msgstr "Použijte to pro můj kanban"
 
 #. module: web
 #. openerp-web
@@ -4436,7 +4445,7 @@ msgstr "Uživatel"
 #: code:addons/web/static/src/js/services/crash_manager.js:0
 #, python-format
 msgid "User Error"
-msgstr ""
+msgstr "Chyba uživatele"
 
 #. module: web
 #. openerp-web
@@ -4479,7 +4488,7 @@ msgstr "Zobrazit %s"
 #: code:addons/web/static/src/xml/debug.xml:0
 #, python-format
 msgid "View Access Rights"
-msgstr ""
+msgstr "Zobrazit přístupová práva"
 
 #. module: web
 #. openerp-web
@@ -4501,7 +4510,7 @@ msgstr "Zobrazit metadata"
 #: code:addons/web/static/src/xml/debug.xml:0
 #, python-format
 msgid "View Record Rules"
-msgstr ""
+msgstr "Zobrazit přístupová pravidla"
 
 #. module: web
 #: model:ir.model.fields,field_description:web.field_ir_actions_act_window_view__view_mode
@@ -4513,7 +4522,7 @@ msgstr "Typ zobrazení"
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "View switcher"
-msgstr ""
+msgstr "Zobrazit přepínač"
 
 #. module: web
 #. openerp-web
@@ -4542,7 +4551,7 @@ msgstr "Testy webu pro mobilní zařízení"
 #. module: web
 #: model_terms:ir.ui.view,arch_db:web.qunit_suite
 msgid "Web Tests"
-msgstr ""
+msgstr "Webové testy"
 
 #. module: web
 #: model:ir.model.fields,field_description:web.field_base_document_layout__website
@@ -4724,7 +4733,7 @@ msgstr "Vaše jméno"
 #: code:addons/web/static/src/js/views/kanban/kanban_record.js:0
 #, python-format
 msgid "[No widget %s]"
-msgstr ""
+msgstr "[Žádný widget %s]"
 
 #. module: web
 #. openerp-web
@@ -4910,7 +4919,7 @@ msgstr "je před"
 #: code:addons/web/static/src/js/control_panel/search_utils.js:0
 #, python-format
 msgid "is before or equal to"
-msgstr ""
+msgstr "je před nebo rovno"
 
 #. module: web
 #. openerp-web
@@ -5091,7 +5100,7 @@ msgstr "záznam(y)"
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "records ?"
-msgstr ""
+msgstr "záznamy ?"
 
 #. module: web
 #. openerp-web
@@ -5120,7 +5129,7 @@ msgstr "vybráno"
 #: code:addons/web/static/src/xml/base.xml:0
 #, python-format
 msgid "selected records,"
-msgstr ""
+msgstr "vybrané záznamy,"
 
 #. module: web
 #. openerp-web
